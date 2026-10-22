@@ -61,5 +61,33 @@ $('importFile').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{co
 load();
 })();
 </script>
+
+<style>
+.audio-dock{position:fixed;z-index:9999;left:12px;right:12px;bottom:12px;max-width:540px;margin:auto;display:flex;align-items:center;gap:10px;padding:10px 12px;background:#14111bf2;border:1px solid #58334f;border-radius:16px;box-shadow:0 10px 35px #0009;backdrop-filter:blur(12px)}
+.audio-dock .audio-icon{font-size:22px}.audio-dock .audio-copy{flex:1;min-width:0}.audio-dock strong{display:block;font-size:12px;letter-spacing:.06em}.audio-dock small{color:#b6aabd;font-size:10px}.audio-dock button{padding:9px 11px;white-space:nowrap}.audio-dock input{width:76px;padding:0;accent-color:#f04455}.audio-dock .audio-vol{display:flex;align-items:center;gap:5px;font-size:12px;color:#c9bfd2}
+@media(max-width:440px){.audio-dock{gap:7px;padding:9px}.audio-dock .audio-vol{display:none}.audio-dock button{font-size:11px;padding:9px}.audio-dock strong{font-size:10px}}
+</style>
+<div class="audio-dock" role="region" aria-label="Sottofondo horror">
+  <div class="audio-icon">🎧</div><div class="audio-copy"><strong>SOTTOFONDO HORROR</strong><small id="bgAudioStatus">Atmosfera sonora pronta</small></div>
+  <label class="audio-vol" title="Volume">♪ <input id="bgAudioVolume" type="range" min="0" max="0.35" step="0.01" value="0.12" aria-label="Volume sottofondo"></label>
+  <button class="primary" id="bgAudioToggle" type="button">▶ Attiva</button>
+</div>
+<audio id="bgHorrorAudio" loop preload="none" src="https://raw.githubusercontent.com/alessandropoabaglio-spec/escaper/main/audio/sottofondo.mp3"></audio>
+<script>
+(function(){
+ const audio=document.getElementById('bgHorrorAudio'),btn=document.getElementById('bgAudioToggle'),status=document.getElementById('bgAudioStatus'),vol=document.getElementById('bgAudioVolume');
+ if(!audio||!btn)return;
+ audio.volume=Number(vol.value);
+ let active=false;
+ try{active=localStorage.getItem('scaryWorldHorrorMusic')==='on';}catch(e){}
+ function paint(){btn.textContent=audio.paused?'▶ Attiva':'Ⅱ Pausa';status.textContent=audio.paused?'Atmosfera sonora pronta':'Il sottofondo è attivo';}
+ btn.addEventListener('click',async()=>{if(audio.paused){try{await audio.play();try{localStorage.setItem('scaryWorldHorrorMusic','on')}catch(e){}paint()}catch(e){status.textContent='Audio non disponibile: controlla la connessione';}}else{audio.pause();try{localStorage.setItem('scaryWorldHorrorMusic','off')}catch(e){}paint();}});
+ vol.addEventListener('input',()=>{audio.volume=Number(vol.value);});
+ audio.addEventListener('error',()=>{status.textContent='Impossibile caricare il file audio';});
+ paint();
+ if(active){audio.play().then(paint).catch(()=>{status.textContent='Tocca “Attiva” per avviare il sottofondo';});}
+})();
+</script>
+
 </body>
 </html>
