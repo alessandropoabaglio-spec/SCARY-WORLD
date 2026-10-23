@@ -15,18 +15,20 @@ Le nuove pagine sono una prima bozza per provare il flusso amministratore/giocat
 - Nome partita, durata, numero squadre e raggio di attivazione configurabili.
 - Creazione di tappe e scelta del tipo di enigma: codice a rotelle, ingranaggi, rebus o quiz.
 - Campo per testo dell'enigma e soluzione attesa.
+- Coordinate GPS per ogni tappa: si possono inserire manualmente o acquisire dalla posizione attuale dello smartphone.
 - Generazione di codice dimostrativo e import/export JSON per trasferire la configurazione.
 
 ## Player — bozza
 
 - Nome squadra e codice partita.
 - Importazione del JSON preparato dall'Administrator.
-- Prova degli enigmi: rotelle numeriche, mini-puzzle di ingranaggi dimostrativo e risposta a rebus/quiz.
+- Prova degli enigmi animati: rotelle numeriche, ingranaggi, rebus visivo e quiz a scelta multipla.
+- Attivazione GPS delle tappe con coordinate: la pagina mostra la distanza e sblocca l'enigma entro il raggio impostato.
 - Avanzamento salvato localmente nel browser.
 
 ## Limiti attuali
 
-Questa è una **demo locale**, non ancora un multiplayer completo. Il codice partita non sincronizza telefoni diversi; le posizioni GPS non attivano ancora automaticamente le tappe; il puzzle degli ingranaggi è un esempio dimostrativo. Per giocare sui diversi telefoni occorre implementare un backend in tempo reale. Per sicurezza, non usare ancora la password dimostrativa per proteggere dati reali.
+Questa è una **demo locale**, non ancora un multiplayer completo. Il codice partita non sincronizza telefoni diversi. L'attivazione GPS funziona nel browser con HTTPS e permesso di geolocalizzazione, ma dipende dalla precisione del dispositivo e non sostituisce un sistema anti-manomissione. Il puzzle degli ingranaggi resta un minigioco dimostrativo. Per giocare sui diversi telefoni occorre implementare un backend in tempo reale. Per sicurezza, non usare ancora la password dimostrativa per proteggere dati reali.
 
 Non è disponibile una vera modalità offline: la mappa del prototipo originale richiede internet. Per le mappe offline servirà una fonte che ne autorizzi il download e l'utilizzo.
 
@@ -55,8 +57,7 @@ Nell'Administrator si possono definire fino a quattro opzioni per i quiz, separa
 ## Prossimi passi
 
 1. Provare Administrator e Player su smartphone.
-2. Rifinire e implementare i minigiochi animati.
-3. Collegare GPS e raggio di attivazione delle tappe.
-4. Implementare autenticazione reale per l'Administrator.
-5. Aggiungere backend per sincronizzare partita, squadre, posizioni e scoperte in tempo reale.
-6. Verificare installabilità PWA, prestazioni e opzioni offline gratuite.
+2. Migliorare gli ingranaggi con trascinamento e rotazione fisica più credibile.
+3. Implementare autenticazione reale per l'Administrator.
+4. Aggiungere backend per sincronizzare partita, squadre, posizioni e scoperte in tempo reale.
+5. Verificare installabilità PWA, prestazioni e opzioni offline gratuite.
