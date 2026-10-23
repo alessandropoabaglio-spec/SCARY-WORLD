@@ -40,6 +40,18 @@ In GitHub, apri **Settings → Pages** e scegli **Deploy from a branch**, branch
 
 La mappa del prototipo originale usa Leaflet e il servizio standard di tile di OpenStreetMap con attribuzione visibile. Le tile pubbliche standard non devono essere scaricate in massa per l'uso offline.
 
+
+## Minigiochi animati (prima versione)
+
+La pagina Player ora include:
+- **Rotelle del codice** con feedback animato quando il codice è errato o corretto.
+- **Ingranaggi** da selezionare e collocare nelle sedi; la sequenza corretta fa girare il meccanismo.
+- **Rebus visivo** con simboli animati e campo per inserire la soluzione.
+- **Quiz a scelta multipla** con pulsanti, feedback e barra temporale visuale.
+- **Enigma testuale** con verifica della risposta.
+
+Nell'Administrator si possono definire fino a quattro opzioni per i quiz, separate da punto e virgola, e indicare la soluzione corretta. Questi minigiochi sono una prima demo: non sono ancora puzzle grafici avanzati con editor visuale, e il timer del quiz è al momento un effetto visivo.
+
 ## Prossimi passi
 
 1. Provare Administrator e Player su smartphone.
